@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.RadioButton
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -112,9 +113,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+//
+//        val gridManager = GridLayoutManager(this, GridLayoutManager.VERTICAL,false)
 
-        recyclerview.layoutManager = layoutManager
+//        recyclerview.layoutManager = layoutManager
 
     }
 
@@ -129,11 +131,17 @@ class MainActivity : AppCompatActivity() {
                     if (checked) {
                         Log.d("Binar","test2")
                         recyclerview.adapter = adapterHewan
+                        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                        recyclerview.layoutManager = layoutManager
                     }
                 R.id.rb_buah ->
                     if (checked) {
                         Log.d("Binar","test")
                         recyclerview.adapter = adapterBuah
+                        // spanCount -> membagi menjadi berapa bagian VERTICAL untuk membagi secara kolom dan HORIZONTAL membagi secara baris
+                        val gridManager = GridLayoutManager(this, 1, GridLayoutManager.VERTICAL,false)
+                        recyclerview.layoutManager = gridManager
+
                     }
             }
         }
